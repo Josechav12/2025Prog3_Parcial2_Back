@@ -1,13 +1,7 @@
 import express from "express";
-<<<<<<< HEAD
 import environments from "./src/api/config/environments.js";
 
 const app = express();
-=======
-const app = express();
-
-import environments from "./src/api/config/environments.js"; // Importamos las variables de entorno para definir el puerto
->>>>>>> c8a3b77d9ee6e87fef092beee22541d4f7270021
 const PORT = environments.port;
 
 import connection from "./src/api/database/db.js"; // Importamos la conexion a la BBDD para poder enviarle sentencias SQL
