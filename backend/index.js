@@ -2,10 +2,9 @@
     Importaciones
 ====================*/
 import express from "express";
-const app = express();
-
 import environments from "./src/api/config/environments.js";
 
+const app = express();
 const PORT = environments.port;
 
 
