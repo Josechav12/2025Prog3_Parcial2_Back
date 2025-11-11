@@ -7,9 +7,11 @@ const PORT = environments.port;
 import connection from "./src/api/database/db.js"; // Importamos la conexion a la BBDD para poder enviarle sentencias SQL
 import cors from "cors";
 
-
+// Middlewares
 app.use(cors()); //Middleware CORS basico que permite todas las solicitudes
 app.use(express.json()); // Middleware que transforma el JSON de las peticiones POST a objetos JS
+//logger para mostrar ppor la consola las peticiones a nuestro servidor
+
 
 // Traer todos los productos
 app.get("/products", async (req, res) => { 
@@ -36,6 +38,7 @@ app.get("/products", async (req, res) => {
     }
 
 });
+
 
 // Traer un producto por ID
 // Get product by id -> Consultar producto por su id
@@ -118,6 +121,30 @@ app.get("/products/:id", async (req, res) => {
     }
 });
 
+//update, actualizar un producto por ID
+app.put("/products/:id", async (req, res) => {
+    try {
+        let { id, image, name, price, type } = req.body;
+
+        let sql = `UPDATE productos SET imagen = ?, nombre = ?, precio = ?, tipo = ? WHERE id = ?`;
+        
+        let [result] = await connection.query(sql, [image, name, price, type, id]);
+        console.log(result);
+
+        res.status(200).json({
+            message: `Producto con id ${id} actualizado correctamente`
+        });
+
+    } catch(error) {
+        console.error("Error al actualizar un producto: ", error);
+
+        res.status(500).json({
+            message: `Error onterno del servidor ${id}: `, error
+        })
+    }
+});
+
+// Eliminar un producto por ID
 app.delete("/products/:id", async (req, res) => {
     try {
         let { id } = req.params;
