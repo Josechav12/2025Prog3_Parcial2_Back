@@ -1,0 +1,64 @@
+/* Estilos globales: colores,
+fuentes,
+botones y estructura base */
+:root {
+    --color-fondo: #f3f4f6;
+    --color-texto: #111827;
+    --color-primario: #facc15;
+    --color-secundario: #222;
+}
+
+/* Configuración base */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    margin: 0;
+    padding: 0;
+}
+
+/* Botones */
+button,
+.btn {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover,
+.btn:hover {
+    background-color: #ffe44d; 
+}
+
+/* Cabecera y navegación */
+header {
+    text-align: center;
+    padding: 15px;
+    background-color: var(--color-secundario);
+}
+
+nav {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--color-secundario);
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-texto);
+    margin: 0 10px;
+    font-weight: bold;
+}
+/* Marca de agua con los nombres */
+#marca-agua {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: rgb(0, 0, 0);
+}

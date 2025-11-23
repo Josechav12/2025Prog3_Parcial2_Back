@@ -116,7 +116,7 @@ export const updateProduct = async (req, res) => {
                 message: "Faltan campos requeridos"
             });
         }
-
+        // plantilla de consulta SQL con placeholders
         let sql = `
             UPDATE productos
             SET nombre = ?, imagen = ?, tipo = ?, precio = ?, activo = ?
