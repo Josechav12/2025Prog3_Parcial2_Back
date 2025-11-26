@@ -7,7 +7,6 @@ const loggerUrl = (req, res, next) => {
     next();
 }
 
-
 // Middleware de ruta -> Se aplica a rutas especificas
 const validateId = (req, res, next) => {
     let { id } = req.params;
@@ -26,6 +25,16 @@ const validateId = (req, res, next) => {
     next();
 }
 
+// Middleware de ruta -> Se aplica a rutas especificas
+const requireLogin = (req, res, next) => {
+    // Chequeamos si no existe la sesion de usuario, de ser asi, redirigimos a /login
+    if(!req.session.user) {
+        return res.redirect("/login");
+    }
+    next(); // Sin el next, nunca llega a procesar la respuesta -> response
+};
+
+
 const saluditos = (req, res, next) => {
     console.log("hola desde el middleware saluditos");
     next();
@@ -34,5 +43,6 @@ const saluditos = (req, res, next) => {
 export {
     loggerUrl,
     validateId,
-    saluditos
+    saluditos,
+    requireLogin
 }

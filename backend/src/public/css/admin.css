@@ -129,6 +129,44 @@ button:hover {
     padding: 8px 12px;
 }
 
+/* login */
+.error-message {
+    padding: 10px;
+    border: 2px solid #eb99a1;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #eb99a1;
+}
 
+/* cerrar sesión */
+#logout input[type="submit"] {
+    background-color: var(--color-primario);
+    color: var(--color-secundario); 
+    font-weight: bold;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin:auto;
+    display: block;
+}
 
+#login-form input[type="button"] {
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
 
+/* Hover uniforme para ambos botones */
+#login-form input[type="button"]:hover {
+    background-color: #ffe44d;
+}
