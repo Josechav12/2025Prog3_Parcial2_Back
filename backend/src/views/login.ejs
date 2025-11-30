@@ -12,11 +12,11 @@ app.use(express.urlencoded({
 -->
 
 <!-- Mostramos mensaje de error del endpoint-->
- <% if (typeof error !== "undefined") { %>
+<% if (typeof error !== "undefined") { %>
 <div class="error-message">
     <%= error %>
 </div>
- <% } %>
+<% } %>
 
 <%- include("partials/nav.login.ejs") %>
 

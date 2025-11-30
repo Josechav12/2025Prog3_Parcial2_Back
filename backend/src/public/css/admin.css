@@ -113,42 +113,54 @@ button:hover {
 
 
 /* Contenedor de los productos buscados por id */
-
 #contenedor-productos-buscados {
     display: flex;
     justify-content: center;
+    margin-top: 25px;
+    width: 100%;
+}
+
+
+#lista-productos {
+    margin: 0 auto;
+    width: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #consulta-prod-div {
+    width: 100%;
+    margin-top: 25px;
     display: flex;
-    padding: 10;   
-}
-
-#lista-productos {
-    position: relative;
-    margin-top: 30px;
-    height: 180px;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
 }
 
 /* Imagen */
 #prod-img {
-    width: 150px;
-    height: auto;
+    width: 120px;
+    border-radius: 6px;
 }
 
-/* Info */
+/* Info  */
 #prod-info {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin: auto;
-    text-align: center;
+    align-items: center;
+    font-size: 16px;
+    line-height: 1.1; 
+
 }
 
 /* Botón */
 #prod-btn {
-    margin: auto;
-    height: 30px;
-    padding: 8px 12px;
+    padding: 8px 16px;
+    background-color: var(--color-primario);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 /* login */
@@ -184,6 +196,17 @@ button:hover {
     cursor: pointer;
     margin:auto;
     display: block;
+}
+
+#login-form input[type="button"] {
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
 }
 
 /* Hover uniforme para ambos botones */

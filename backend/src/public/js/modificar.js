@@ -34,7 +34,7 @@ getProduct_form.addEventListener("submit", async (event) => {
 
         console.log(datos); // {payload: Array(1), message: 'Producto encontrado'}
         console.log(datos.payload); // [{…}]
-        console.log(datos.payload[0]); // {id: 1, nombre: 'La maquina de hacer pajaros - Peliculas', tipo: 'LP', precio: 10000, imagen: 'https://i.discogs.com/rKa1bYXYX2w5nIGDULFozlTjVbmM…y9SLTM1MDY2/NjctMTUwOTczNTA0/Ni01NzM4LmpwZWc.jpeg', …}
+        console.log(datos.payload[0]); // {id: 1, nombre: '...', ...}
 
         let producto = datos.payload[0];
 
@@ -51,18 +51,18 @@ getProduct_form.addEventListener("submit", async (event) => {
 function mostrarProducto(producto) {
     console.table(producto);
     let htmlProducto = `
-                <div id="consulta-prod-div">
-                    <img id="prod-img" src="${producto.imagen}" alt="${producto.nombre}">
+        <div id="consulta-prod-div">
+            <img id="prod-img" src="${producto.imagen}" alt="${producto.nombre}">
+            
+            <div id="prod-info">
+                <p><strong>ID:</strong> ${producto.id}</p>
+                <p><strong>Nombre:</strong> ${producto.nombre}</p>
+                <p><strong>Precio:</strong> $${producto.precio}</p>
+            </div>
 
-                    <div id="prod-info">
-                        <p><strong>ID:</strong> ${producto.id}</p>
-                        <p><strong>Nombre:</strong> ${producto.nombre}</p>
-                        <p><strong>Precio:</strong> $${producto.precio}</p>
-                    </div>
-
-                    <button id="prod-btn">Modificar</button>
-                </div>
-                `;
+            <button id="prod-btn">Modificar</button>
+        </div>
+    `;
 
     listaProductos.innerHTML = htmlProducto;
 
@@ -115,31 +115,24 @@ function formularioPutProducto(event, producto) {
 
         event.preventDefault(); // Prevengo el envio por defecto del formulario
 
-        // console.log(event.target); // Aca selecciono el formulario de actualizacion que acabo de crear
-
-        // Transformo en un objeto FormData toda la data del nuevo formulario de actualizacion
         let formData = new FormData(event.target);
-
-        // Transformo este objeto FormData a un objeto JavaScript
         let data = Object.fromEntries(formData.entries());
 
-        console.log(data); // Los datos ya estan listos para ser parseados a JSON e insertos en el body de la peticion PUT
+        console.log(data); // Los datos ya estan listos...
 
         try {
             console.log(`Haciendo peticion PUT a ${url}`);
 
-            let response = await fetch(url, {
+            let response = await fetch(url, { // <--- AHORA SIN PRODUCTO.ID EN LA URL
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(data) // el id VIAJA EN EL BODY
             });
 
-            // Aca imprimimos la promesa que devuelve el fetch
             console.log(response);
 
-            // Esperamos a procesar la respuesta del servidor
             let result = await response.json();
             console.log(result);
 
@@ -147,7 +140,6 @@ function formularioPutProducto(event, producto) {
                 console.log(result.message);
                 alert(result.message);
 
-                // Vaciamos la lista de productos y el formulario de actualizacion
                 listaProductos.innerHTML = "";
                 contenedor_update.innerHTML = "";
 
@@ -156,9 +148,9 @@ function formularioPutProducto(event, producto) {
                 alert(result.message);
             }
 
-        } catch (error) { // El catch en nuestra solicitud fetch SOLO capturan errores reales de red
+        } catch (error) {
             console.error("Error al enviar los datos: ", error);
-            alert("Error al procesar la solicitud")
+            alert("Error al procesar la solicitud");
         }
     });
 }

@@ -13,6 +13,7 @@ getProduct_form.addEventListener("submit", async (event) => {
 
     console.log("Formulario no enviado");
     console.log(event.target); // Con event target accedemos al evento que disparo el addEventListener
+
     // Vamos a guardar como objetos los valores del formulario HTML
     let formData = new FormData(event.target);
     console.log(formData); // FormData { idProd → "2" }
@@ -34,18 +35,17 @@ getProduct_form.addEventListener("submit", async (event) => {
 
         let datos = await respuesta.json();
 
-
         if (respuesta.ok) {
             console.log(datos.payload); // [{…}]
-            console.log(datos.payload[0]); // {id: 1, nombre: 'La maquina de hacer pajaros - Peliculas', tipo: 'LP', precio: 10000, imagen: 'https://i.discogs.com/rKa1bYXYX2w5nIGDULFozlTjVbmM…y9SLTM1MDY2/NjctMTUwOTczNTA0/Ni01NzM4LmpwZWc.jpeg', …}
+            console.log(datos.payload[0]); // {id: 1, nombre: ..., precio: ...}
 
             let producto = datos.payload[0];
             mostrarProducto(producto);
+
         } else {
             console.error(datos.message);
             mostrarError(datos.message);
         }
-
 
     } catch (error) {
         console.log(error);
@@ -54,46 +54,27 @@ getProduct_form.addEventListener("submit", async (event) => {
 
 // Funcion para mostrar un producto en el HTML
 function mostrarProducto(producto) {
-    console.table(producto);
     let htmlProducto = `
-                <div id="consulta-prod-div">
-                    <img id="prod-img" src="${producto.imagen}" alt="${producto.nombre}">
-
-                    <div id="prod-info">
-                        <p><strong>ID:</strong> ${producto.id}</p>
-                        <p><strong>Nombre:</strong> ${producto.nombre}</p>
-                        <p><strong>Precio:</strong> $${producto.precio}</p>
-                    </div>
-                </div>
-                `;
+        <div id="consulta-prod-div">
+            <img id="prod-img" src="${producto.imagen}" alt="${producto.nombre}">
+            
+            <div id="prod-info">
+                <p><strong>ID:</strong> ${producto.id}</p>
+                <p><strong>Nombre:</strong> ${producto.nombre}</p>
+                <p><strong>Precio:</strong> $${producto.precio}</p>
+            </div>
+        </div>
+    `;
 
     listaProductos.innerHTML = htmlProducto;
 }
 
 // Imprimimos un mensaje visual de error en el HTML
-function mostarError(mensaje) {
+function mostrarError(mensaje) {
     let htmlError = `
-                <li class="mesaje-error">
-                    <p>
-                        strong>Error:</strong>
-                        span>${error}</span>
-                    </p>
-                </li>
-            `;
+        <li class="mensaje-error">
+            <p><strong>Error:</strong> ${mensaje}</p>
+        </li>
+    `;
     listaProductos.innerHTML = htmlError;
 }
-/*==========================
-        Que es FormData?
-============================
-A diferencia de un objeto JavaScript común, FormData está diseñado específicamente para manejar datos de formularios, incluyendo archivos,
-y puede ser creado desde un formulario HTML al pasar el elemento form al constructor new FormData(form)
-
-FormData es una interfaz nativa de JavaScript que permite crear un conjunto de pares clave-valor
-que representan los campos de un formulario HTML y sus respectivos valores.
-
-Esta clase se utiliza principalmente para capturar y enviar datos de formularios,
-ya sea mediante métodos como fetch o XMLHttpRequest,
-y se encarga de formatear los datos correctamente como multipart/form-data,
-estableciendo automáticamente los encabezados necesarios para el envío
-*/
-// let respuesta = await fetch("http://localhost:3000/products/${idProducto}");

@@ -1,5 +1,6 @@
 let getProduct_form = document.getElementById("getProduct-form");
 let listaProductos = document.getElementById("lista-productos");
+// Definimos la URL base de la API REST
 let url = "http://localhost:3000/api/products";
 
 
@@ -40,16 +41,18 @@ getProduct_form.addEventListener("submit", async (event) => {
 
         // Creamos un nuevo boton a nuestro listado de ver producto
         let htmlProducto = `
-                    <img id="prod-img" src="${producto.imagen}" alt="${producto.nombre}">
+            <div id="consulta-prod-div">
+                <img id="prod-img" src="${producto.imagen}" alt="${producto.nombre}">
+                
+                <div id="prod-info">
+                    <p><strong>ID:</strong> ${producto.id}</p>
+                    <p><strong>Nombre:</strong> ${producto.nombre}</p>
+                    <p><strong>Precio:</strong> $${producto.precio}</p>
+                </div>
 
-                    <div id="prod-info">
-                        <p><strong>ID:</strong> ${producto.id}</p>
-                        <p><strong>Nombre:</strong> ${producto.nombre}</p>
-                        <p><strong>Precio:</strong> $${producto.precio}</p>
-                    </div>
-
-                    <button id="prod-btn">Eliminar</button>
-                `;
+                <button id="prod-btn">Eliminar</button>
+            </div>
+        `;
         // Renderizamos el listado en la pagina
         listaProductos.innerHTML = htmlProducto;
 
