@@ -10,8 +10,8 @@ const SESSION_KEY = environments.session_key;
 
 import cors from "cors";
 
-import { loggerUrl, saluditos } from "./src/api/middlewares/middlewares.js";
-import { productRoutes, viewRoutes, userRoutes } from "./src/api/routes/index.js";
+import { loggerUrl} from "./src/api/middlewares/middlewares.js";
+import { productRoutes, viewRoutes, userRoutes, ticketRoutes } from "./src/api/routes/index.js";
 import { join, __dirname } from "./src/api/utils/index.js";
 
 import session from "express-session";
@@ -83,6 +83,8 @@ app.set("views", join(__dirname, "src/views")); // Indicamos la ruta de las vist
 //});
 
 app.use("/api/products", productRoutes);
+
+app.use("/api/tickets", ticketRoutes);
 
 app.use("/", viewRoutes);
 
