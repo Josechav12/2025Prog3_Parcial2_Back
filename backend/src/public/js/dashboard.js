@@ -41,7 +41,6 @@ function mostrarProductos(productos) {
                         <div class="card-producto-innerdiv">    
                             <p>Id: ${prod.id}</p>
                             <p>$${prod.precio}</p>
-                            <button onClick="agregarACarrito(${prod.id})">Agregar al carrito</button>
                         </div>
                     </div>
                 `;

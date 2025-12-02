@@ -59,7 +59,7 @@ export const userLogin = async (req, res) => {
             correo: user.correo
         }
 
-        res.redirect("/"); // Redirigimos a la pagina principal
+        res.redirect("/dashboard"); // Redirigimos al dashboard después de login exitoso
 
     } catch (error) {
         console.log(error);
