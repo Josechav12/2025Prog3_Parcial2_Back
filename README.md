@@ -65,11 +65,11 @@ El proyecto está diseñado como **backend + panel admin**, dejando el **fronten
 git clone https://github.com/usuario/electrocomponentes.git
 cd electrocomponentes
 npm install
+
 🔐 Variables de Entorno
 Crear archivo `.env`:
 
-env
-Copiar código
+.env
 PORT=3000
 DB_HOST=localhost
 DB_NAME=nombre_base_de_datos
@@ -77,14 +77,12 @@ DB_USER=root
 DB_PASSWORD=
 SESSION_SECRET=clave_secreta_segura
 ▶️ Ejecutar
-bash
-Copiar código
-npm run dev
-O:
 
-bash
-Copiar código
+npm run dev
+
+```bash
 npm start
+
 🚧 Estado del Proyecto
 ✅ CRUD de productos
 
@@ -93,13 +91,6 @@ npm start
 ✅ Vistas EJS integradas
 
 ✅ Arquitectura modular
-
-🔜 Pendiente
-Encriptación de contraseñas (bcrypt)
-
-Mejoras visuales
-
-Exportación de datos (Excel / tickets)
 
 👨‍💻 Autor
 Jose Chavarri
