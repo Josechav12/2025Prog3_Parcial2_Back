@@ -57,31 +57,66 @@ El proyecto está diseñado como **backend + panel admin**, dejando el **fronten
 ## 💻 Instalación
 
 ### ✅ Requisitos Previos
-- Node.js
-- MySQL
+- **Node.js** (v18 o superior recomendado)
+- **MySQL**
 
-### ▶️ Pasos
+### ▶️ Pasos de Instalación
+1. Clonar el repositorio:
 ```bash
 git clone https://github.com/usuario/electrocomponentes.git
 cd electrocomponentes
-npm install
+Inicializar el proyecto:
+```
 
+### ▶️ Pasos de Instalación
+```bash
+npm init -y
+Instalar dependencias principales:
+```
+
+```bash
+npm install express mysql2 ejs cors dotenv express-session
+Instalar dependencias de desarrollo:
+```
+
+```bash
+npm install --save-dev nodemon
+```
 🔐 Variables de Entorno
-Crear archivo `.env`:
+Crear un archivo `.env` en la raíz del proyecto:
 
-.env
+.env:
 PORT=3000
 DB_HOST=localhost
 DB_NAME=nombre_base_de_datos
 DB_USER=root
 DB_PASSWORD=
 SESSION_SECRET=clave_secreta_segura
-▶️ Ejecutar
 
-npm run dev
-
+▶️ Ejecutar el Proyecto
+Desarrollo
 ```bash
-npm start
+npm run dev
+```
+
+🔍 Funcionamiento del Proyecto
+🚀 Inicio del Servidor
+Carga de variables de entorno
+
+Configuración de middlewares globales
+
+Servido de archivos estáticos
+
+Configuración de EJS como motor de vistas
+
+🔑 Sistema de Login
+Acceso a /login
+
+Envío de credenciales por formulario
+
+Validación contra la base de datos
+
+Creación de sesión y redirección al dashboard
 
 🚧 Estado del Proyecto
 ✅ CRUD de productos
@@ -91,6 +126,13 @@ npm start
 ✅ Vistas EJS integradas
 
 ✅ Arquitectura modular
+
+🔜 Pendiente
+Encriptación de contraseñas (bcrypt)
+
+Mejoras visuales
+
+Exportación de datos (Excel / tickets)
 
 👨‍💻 Autor
 Jose Chavarri
